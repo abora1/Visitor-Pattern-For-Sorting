@@ -17,7 +17,8 @@ public class FileProcessor {
 	public FileProcessor(String input) {
 		try {
 			File f = new File(input);
-			if (!f.exists()) {
+			if (!f.exists() && !f.isDirectory()) {
+				System.out.println("THE GIVEN FILE DOES NOT EXISTS");
 				Logger.writeMessage("THE GIVEN INPUT FILE IS INVALID",
 						DebugLevel.FILE_PROCESSOR);
 				System.exit(0);
