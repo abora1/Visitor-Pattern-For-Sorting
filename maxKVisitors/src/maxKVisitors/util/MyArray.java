@@ -1,12 +1,14 @@
 package maxKVisitors.util;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class MyArray implements IntegerI{
-int[] myA=new int[1000];
-int counter=0;
+	public ArrayList<Integer> arr = new ArrayList<Integer>();
+
 	@Override
 	public  void insert(int value) {
-		myA[counter]=value;
-		counter++;
+		arr.add(value);
 	}
 	
 	@Override
@@ -15,11 +17,9 @@ int counter=0;
 	}
 
 	public void display(){
-		int count=0;
-		while(count<counter)
+		for(int i=0;i<arr.size();i++)
 		{
-			System.out.println(myA[count]);
-			count++;
+			System.out.println(arr.get(i));
 		}
 	}
 	

@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import maxKVisitors.util.Logger;
@@ -35,12 +36,11 @@ public class FileProcessor {
 	}
 
 	// this method returns a single line from the file to user.
-	public int nextInt() {
+	public String readline() {
 		try {
 			String s = null;
 			while ((s = br.readLine()) != null) {
-				int x=Integer.parseInt(s);
-				return x;
+				return s;
 			}
 		} catch (IOException e) {
 			Logger.writeMessage("INPUT FILE CANNOT BE FETCHED",
@@ -51,6 +51,28 @@ public class FileProcessor {
 			e.printStackTrace();
 			System.exit(0);
 		}
+		return null;
+	}
+	public int nextInt() {
+		try {
+			String s = null;
+			while ((s = br.readLine()) != null) {
+				int x=Integer.parseInt(s);
+				return x;
+			}
+		} catch (NumberFormatException  e) {
+			Logger.writeMessage("CONVERSION FROM STRING TO INT FAILED",
+					DebugLevel.FILE_PROCESSOR);
+			e.printStackTrace();
+			System.exit(0);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+		 catch (Exception e) {
+				e.printStackTrace();
+				System.exit(0);
+			}
 		return 0;
 	}
 

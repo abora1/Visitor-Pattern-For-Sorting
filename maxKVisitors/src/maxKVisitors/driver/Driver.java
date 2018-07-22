@@ -1,6 +1,6 @@
 package maxKVisitors.driver;
 
-import maxKVisitors.util.FileProcessor;
+import maxKVisitors.util.ModifiedBubbleSortVisitor;
 import maxKVisitors.util.MyArray;
 import maxKVisitors.util.MyVector;
 import maxKVisitors.util.PopulateVisitor;
@@ -16,6 +16,13 @@ public class Driver {
 		vec1.accept(v1);
 		m1.display();
 		System.out.println("The vector is as follows");
+		vec1.display();
+		Visitor v2=new ModifiedBubbleSortVisitor();
+		m1.accept(v2);
+		vec1.accept(v2);
+		System.out.println("The BUBBLESORT FOR ARRAY is as follows");
+		m1.display();
+		System.out.println("The BUBBLESORT FOR VECTOR is as follows");
 		vec1.display();
 	}
 }
