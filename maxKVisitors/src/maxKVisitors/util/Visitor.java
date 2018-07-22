@@ -1,5 +1,6 @@
 package maxKVisitors.util;
 
-public class Visitor {
-
+public interface Visitor {
+	void visit(MyArray visitor);
+	void visit(MyVector v1);
 }
