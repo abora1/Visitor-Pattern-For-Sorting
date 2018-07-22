@@ -1,11 +1,16 @@
 package maxKVisitors.util;
 
-import java.awt.List;
 import java.util.ArrayList;
+import maxKVisitors.util.Logger;
+import maxKVisitors.util.Logger.DebugLevel;
 
-public class MyArray implements IntegerI{
+/**
+ * @author akshay This class stores the Input files in an arraylist.
+ */
+public class MyArray implements IntegerI {
 	public ArrayList<Integer> arr = new ArrayList<Integer>();
-	int k=0;
+	int k = 0;
+
 	public int getK() {
 		return k;
 	}
@@ -15,28 +20,29 @@ public class MyArray implements IntegerI{
 	}
 
 	@Override
-	public  void insert(int value) {
+	public void insert(int value) {
 		arr.add(value);
 	}
-	
+
 	@Override
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
 
-	public void display(){
-		for(int i=0;i<k;i++)
-		{
-			System.out.print(arr.get(i)+",");
+	// to display the outputs after sorting.
+	public void display() {
+		for (int i = 0; i < k; i++) {
+			Logger.writeMessage(arr.get(i) + ",", DebugLevel.OUTPUT);
 		}
-		 System.out.println("\n");
+		Logger.writeMessage("\n", DebugLevel.OUTPUT);
 	}
-	public void displayInput(){
-		for(int i=0;i<arr.size();i++)
-		{
-			System.out.print(arr.get(i)+",");
+
+	// to display the input file.
+	public void displayInput() {
+		for (int i = 0; i < arr.size(); i++) {
+			Logger.writeMessage(arr.get(i) + ",", DebugLevel.INPUT);
 		}
-		 System.out.println("\n");
+		Logger.writeMessage("\n", DebugLevel.INPUT);
 	}
 
 }

@@ -8,7 +8,7 @@ public class Logger {
 
 	// enums for the Levels
 	public static enum DebugLevel {
-		CONSTRUCTOR, FILE_PROCESSOR, NONE, OBSERVERS
+		CONSTRUCTOR, FILE_PROCESSOR, NONE, INPUT, OUTPUT
 	};
 
 	private static DebugLevel debugLevel;
@@ -16,8 +16,11 @@ public class Logger {
 	// switch cases to handle different levels
 	public static void setDebugValue(int levelIn) {
 		switch (levelIn) {
+		case 4:
+			debugLevel = DebugLevel.OUTPUT;
+			break;
 		case 3:
-			debugLevel = DebugLevel.OBSERVERS;
+			debugLevel = DebugLevel.INPUT;
 			break;
 		case 2:
 			debugLevel = DebugLevel.CONSTRUCTOR;
@@ -38,7 +41,7 @@ public class Logger {
 	// this method prints all the message to that debug level.
 	public static void writeMessage(String message, DebugLevel levelIn) {
 		if (levelIn == debugLevel)
-			System.out.println(message);
+			System.out.print(message);
 	}
 
 	public String toString() {

@@ -1,13 +1,16 @@
 package maxKVisitors.util;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
-import java.text.ParseException;
-import java.util.ArrayList;
-
 import maxKVisitors.util.Logger;
 import maxKVisitors.util.Logger.DebugLevel;
+
+/**
+ * @author akshay This class handles the processing of the input file along with
+ *         exceptions occuring during file handling.
+ */
 public class FileProcessor {
 	public FileProcessor() {
 	}
@@ -23,8 +26,13 @@ public class FileProcessor {
 						DebugLevel.FILE_PROCESSOR);
 				System.exit(0);
 			}
+			if (!f.getName().endsWith(".txt")) {
+				System.err
+						.println("(.txt) formats are only supported for input file");
+				System.exit(0);
+			}
 			br = new BufferedReader(new FileReader(f));
-			Logger.writeMessage("New File has Been Accepted",
+			Logger.writeMessage("New File has Been Accepted\n",
 					DebugLevel.FILE_PROCESSOR);
 
 		} catch (IOException e) {
@@ -54,14 +62,16 @@ public class FileProcessor {
 		}
 		return null;
 	}
+
+	// This method returns an Integer from the file.
 	public int nextInt() {
 		try {
 			String s = null;
 			while ((s = br.readLine()) != null) {
-				int x=Integer.parseInt(s);
+				int x = Integer.parseInt(s);
 				return x;
 			}
-		} catch (NumberFormatException  e) {
+		} catch (NumberFormatException e) {
 			Logger.writeMessage("CONVERSION FROM STRING TO INT FAILED",
 					DebugLevel.FILE_PROCESSOR);
 			e.printStackTrace();
@@ -69,11 +79,10 @@ public class FileProcessor {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
 		}
-		 catch (Exception e) {
-				e.printStackTrace();
-				System.exit(0);
-			}
 		return 0;
 	}
 

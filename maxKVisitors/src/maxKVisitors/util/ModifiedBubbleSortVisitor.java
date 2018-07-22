@@ -1,7 +1,13 @@
 package maxKVisitors.util;
 
+/**
+ * @author akshay This visitor class implements the Bubblesort Algorithm on The
+ *         Myarray And MyVector Classes as a visitor which implements the
+ *         visitor Interface.
+ */
 public class ModifiedBubbleSortVisitor implements Visitor {
-
+	// bubblesort that searches the whole array element by element for the
+	// array.
 	@Override
 	public void visit(MyArray visitor) {
 		int size = visitor.arr.size();
@@ -16,6 +22,8 @@ public class ModifiedBubbleSortVisitor implements Visitor {
 		}
 	}
 
+	// bubblesort that searches the whole array element by element for the
+	// vector.
 	@Override
 	public void visit(MyVector vec1) {
 		int size = vec1.v1.size();
