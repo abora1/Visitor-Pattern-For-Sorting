@@ -1,0 +1,65 @@
+package maxKVisitors.util;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+
+import maxKVisitors.util.Logger;
+import maxKVisitors.util.Logger.DebugLevel;
+public class FileProcessor {
+	public FileProcessor() {
+	}
+
+	private BufferedReader br = null;
+
+	public FileProcessor(String input) {
+		try {
+			File f = new File(input);
+			if (!f.exists()) {
+				Logger.writeMessage("THE GIVEN INPUT FILE IS INVALID",
+						DebugLevel.FILE_PROCESSOR);
+				System.exit(0);
+			}
+			br = new BufferedReader(new FileReader(f));
+			Logger.writeMessage("New File has Been Accepted",
+					DebugLevel.FILE_PROCESSOR);
+
+		} catch (IOException e) {
+			Logger.writeMessage("NO INPUT FILE FOUND",
+					DebugLevel.FILE_PROCESSOR);
+			e.printStackTrace();
+			System.exit(0);
+		}
+
+	}
+
+	// this method returns a single line from the file to user.
+	public int nextInt() {
+		try {
+			String s = null;
+			while ((s = br.readLine()) != null) {
+				int x=Integer.parseInt(s);
+				return x;
+			}
+		} catch (IOException e) {
+			Logger.writeMessage("INPUT FILE CANNOT BE FETCHED",
+					DebugLevel.FILE_PROCESSOR);
+			e.printStackTrace();
+			System.exit(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+		return 0;
+	}
+
+	// closes the file when completes execution.
+	public void fileclose() {
+		try {
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
